@@ -1,0 +1,11 @@
+The CSS code has an unexpected behavior when using the `calc()` function with percentages and lengths. For example, the following code attempts to set the width of an element to 50% of its parent's width minus 10px:
+
+```css
+#myElement {
+  width: calc(50% - 10px);
+}
+```
+
+However, this might not work as expected in some browsers because of the order of operations.  Some browsers might calculate 50% first, then subtract 10px from the resulting value, while others might try to subtract 10px from 50% directly which is invalid calculation.
+
+This can lead to unexpected layout issues.
