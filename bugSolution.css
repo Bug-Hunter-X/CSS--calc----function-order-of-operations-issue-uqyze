@@ -1,0 +1,24 @@
+The solution involves restructuring the calculation to avoid the ambiguity.  Instead of `calc(50% - 10px)`, we can use the following approaches:
+
+1. **Using a container:** Set the width of a parent container to `50%` and then subtract `10px` from the width of its child element.
+
+```css
+#parent {
+  width: 50%;
+}
+
+#myElement {
+  width: calc(100% - 10px);
+}
+```
+
+2. **Using JavaScript:**  If precise control over the subtraction is required, Javascript can dynamically calculate the width and set it using `style.width`.  This is the most robust and cross-browser compatible approach.
+
+```javascript
+const element = document.getElementById('myElement');
+const parentWidth = element.parentElement.offsetWidth;
+const newWidth = parentWidth * 0.5 - 10;
+element.style.width = `${newWidth}px`;
+```
+
+Choosing the appropriate solution depends on the context and complexity of your layout.
